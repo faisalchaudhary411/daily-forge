@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Privacy Policy — DailyForge</title>
+  <meta name="description" content="DailyForge Privacy Policy. We collect nothing. All tools run locally in your browser. No tracking, no analytics, no accounts." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dailyforge.app/privacy.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dailyforge.app/privacy.html" />
+  <meta property="og:title" content="Privacy Policy — DailyForge" />
+  <meta property="og:description" content="We collect nothing. All calculations stay on your device. No tracking, no analytics." />
+  <meta property="og:image" content="https://dailyforge.app/icon-512.png" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Privacy Policy — DailyForge" />
+  <meta name="twitter:description" content="We collect nothing. All calculations stay on your device." />
+
+  <meta name="theme-color" content="#7c3aed" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+      --bg: #08090f;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #a78bfa;
+      --accent-deep: #7c3aed;
+      --accent2: #22d3ee;
+      --border: rgba(255,255,255,0.09);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Inter',system-ui,sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 50% -30%, rgba(124, 58, 237, 0.16), transparent 55%),
+        radial-gradient(ellipse 70% 40% at 100% 60%, rgba(34, 211, 238, 0.05), transparent 50%);
+      color: var(--text); line-height:1.65; min-height:100vh;
+    }
+    nav {
+      position:sticky; top:0; z-index:50; padding:1rem 1.25rem;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(8,9,15,0.85); backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+    }
+    .logo {
+      font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none;
+    }
+    .nav-links { display:flex; gap:1.4rem; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); }
+    main { max-width:720px; margin:0 auto; padding:3rem 1.25rem 4rem; }
+    h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,5vw,2.5rem); margin-bottom:0.5rem; letter-spacing:-0.5px; }
+    h2 { font-family:'Space Grotesk',sans-serif; font-size:1.3rem; margin:2rem 0 0.75rem; }
+    .updated { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    p, li { color:var(--muted); margin-bottom:0.9rem; font-size:1rem; }
+    ul { padding-left:1.3rem; margin-bottom:1.2rem; }
+    a { color:var(--accent); }
+    .cta {
+      display:inline-block; margin-top:1.5rem;
+      background:linear-gradient(135deg,var(--accent-deep),var(--accent));
+      color:white; text-decoration:none; padding:0.9rem 1.6rem; border-radius:12px; font-weight:600;
+      box-shadow: 0 6px 20px -4px rgba(167,139,250,0.35);
+    }
+    .cta:hover { filter: brightness(1.06); }
+    footer {
+      text-align:center; padding:2rem 1.25rem; border-top:1px solid var(--border);
+      color:var(--muted); font-size:0.82rem;
+    }
+    footer a { color:var(--muted); margin:0 0.7rem; text-decoration:none; }
+    footer a:hover { color:var(--text); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">DailyForge</a>
+    <div class="nav-links">
+      <a href="/">Tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html" class="active">Privacy</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 2026</p>
+
+    <p>DailyForge is designed to respect your privacy completely.</p>
+
+    <h2>What we collect</h2>
+    <p>We collect <strong style="color:var(--text)">nothing</strong>.</p>
+    <ul>
+      <li>No personal data</li>
+      <li>No analytics or tracking scripts</li>
+      <li>No advertising cookies</li>
+      <li>No accounts or logins</li>
+      <li>No server-side storage of your inputs</li>
+    </ul>
+
+    <h2>Local processing</h2>
+    <p>All calculations (unit conversion, tip splitting, BMI, EMI, password generation, timers, etc.) happen entirely inside your browser. Your numbers, text, and generated passwords never leave your device.</p>
+
+    <h2>Offline & caching</h2>
+    <p>As a Progressive Web App, DailyForge may cache its own files (HTML, CSS, JavaScript, icons) on your device so the tools work offline. This cache lives only on your device and can be cleared at any time through your browser settings.</p>
+
+    <h2>Third-party resources</h2>
+    <p>We load Three.js (for the 3D background) and Google Fonts from public CDNs. These services may receive standard technical requests such as IP address and user-agent. No personal content or calculation data is sent to them.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy ever changes, we will update the “Last updated” date on this page.</p>
+
+    <h2>Contact</h2>
+    <p>Because we store no data about you, there is nothing to request or delete. You can simply stop using the app at any time.</p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/">Tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <p style="margin-top:1rem;opacity:0.7;">© 2026 DailyForge. All rights reserved.</p>
+  </footer>
+</body>
+</html>

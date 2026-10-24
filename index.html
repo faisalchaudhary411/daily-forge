@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <title>DailyForge — Free Everyday Tools | Unit Converter, Tip Calculator, BMI, EMI & More</title>
+  <meta name="description" content="Free online everyday tools: unit converter, tip & bill splitter, percentage calculator, BMI, EMI loan calculator, password generator, pomodoro timer, word counter and more. No ads, works offline, privacy-first." />
+  <meta name="keywords" content="unit converter, tip calculator, bill splitter, percentage calculator, BMI calculator, EMI calculator, password generator, pomodoro timer, word counter, free online tools, offline tools" />
+  <meta name="author" content="DailyForge" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dailyforge.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dailyforge.app/" />
+  <meta property="og:title" content="DailyForge — Free Everyday Tools" />
+  <meta property="og:description" content="Unit converter, tip splitter, BMI, EMI calculator, password generator, pomodoro and more. Clean, fast, no ads, works offline." />
+  <meta property="og:image" content="https://dailyforge.app/icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:site_name" content="DailyForge" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="DailyForge — Free Everyday Tools" />
+  <meta name="twitter:description" content="Unit converter, tip splitter, BMI, EMI, password generator, pomodoro and more. No ads, works offline." />
+  <meta name="twitter:image" content="https://dailyforge.app/icon-512.png" />
+
+  <!-- PWA / Mobile -->
+  <meta name="theme-color" content="#7c3aed" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DailyForge" />
+  <meta name="application-name" content="DailyForge" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DailyForge",
+    "url": "https://dailyforge.app/",
+    "description": "Free everyday utility tools including unit converter, tip calculator, BMI calculator, EMI calculator, password generator, pomodoro timer and more. Works offline.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Unit Converter",
+      "Tip and Bill Splitter",
+      "Percentage Calculator",
+      "Discount Calculator",
+      "Age Calculator",
+      "BMI Calculator",
+      "EMI Loan Calculator",
+      "Password Generator",
+      "Pomodoro Timer",
+      "Stopwatch",
+      "Word Counter",
+      "Case Converter",
+      "Color Converter",
+      "Date Difference Calculator"
+    ],
+    "screenshot": "https://dailyforge.app/icon-512.png",
+    "softwareVersion": "1.0",
+    "author": {
+      "@type": "Organization",
+      "name": "DailyForge"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --bg: #08090f;
+      --bg-elevated: #0f111a;
+      --card: rgba(20, 24, 38, 0.88);
+      --card-hover: rgba(28, 33, 52, 0.95);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-accent: rgba(167, 139, 250, 0.45);
+      --accent: #a78bfa;
+      --accent-deep: #7c3aed;
+      --accent2: #22d3ee;
+      --accent-glow: rgba(167, 139, 250, 0.35);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --success: #34d399;
+      --danger: #f87171;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 50% -30%, rgba(124, 58, 237, 0.18), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 100% 50%, rgba(34, 211, 238, 0.06), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 0% 80%, rgba(167, 139, 250, 0.07), transparent 45%);
+      color: var(--text);
+      min-height: 100vh; min-height: 100dvh;
+      overflow-x: hidden; -webkit-tap-highlight-color: transparent;
+      padding-bottom: var(--safe-bottom);
+    }
+    #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: calc(0.9rem + var(--safe-top)) 1.25rem 0.9rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(8, 9, 15, 0.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.35rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.4px;
+    }
+    .nav-links { display: flex; gap: 1.4rem; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .install-btn {
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent)); color: white; border: none; border-radius: 10px;
+      padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: none;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .install-btn.show { display: inline-block; }
+    .hero {
+      position: relative; z-index: 10;
+      padding: calc(7.5rem + var(--safe-top)) 1.25rem 3.5rem;
+      text-align: center; max-width: 880px; margin: 0 auto;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.3rem, 7vw, 3.8rem); font-weight: 700;
+      line-height: 1.12; margin-bottom: 1rem; letter-spacing: -1.2px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin: 0 auto 1.8rem; line-height: 1.55; }
+    .hero-badges { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
+    .badge {
+      background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(34,211,238,0.1));
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #ddd6fe; padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500;
+    }
+    .section { position: relative; z-index: 10; padding: 2.5rem 1.25rem 4rem; max-width: 1180px; margin: 0 auto; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.65rem; font-weight: 600; margin-bottom: 0.4rem; text-align: center; }
+    .section-sub { text-align: center; color: var(--muted); margin-bottom: 2.2rem; font-size: 0.95rem; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.15rem; }
+    .tool-card { perspective: 1100px; cursor: pointer; }
+    .card-inner {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.45rem; height: 100%;
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s, border-color 0.3s, background 0.3s;
+      transform-style: preserve-3d; position: relative; overflow: hidden;
+    }
+    .card-inner::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(145deg, rgba(167,139,250,0.14), rgba(34,211,238,0.06) 50%, transparent 70%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .tool-card:hover .card-inner, .tool-card:active .card-inner {
+      transform: rotateY(6deg) rotateX(5deg) translateY(-8px);
+      background: var(--card-hover);
+      box-shadow: 0 24px 48px -12px var(--accent-glow), 0 0 0 1px rgba(167,139,250,0.15);
+      border-color: var(--border-accent);
+    }
+    .tool-card:hover .card-inner::before { opacity: 1; }
+    .card-icon {
+      width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 0.95rem;
+      background: linear-gradient(135deg, rgba(167,139,250,0.28), rgba(34,211,238,0.15));
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+    }
+    .card-title { font-weight: 600; font-size: 1.08rem; margin-bottom: 0.35rem; }
+    .card-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.45; }
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      z-index: 200; display: none; align-items: flex-end; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.28s;
+    }
+    .modal-overlay.active { display: flex; opacity: 1; }
+    @media (min-width: 640px) { .modal-overlay { align-items: center; padding: 1.5rem; } }
+    .modal {
+      background: linear-gradient(180deg, #141824 0%, #0f1219 100%);
+      border: 1px solid var(--border); border-radius: 22px 22px 0 0;
+      width: 100%; max-width: 520px; max-height: 92vh; max-height: 92dvh; overflow-y: auto;
+      padding: 1.6rem 1.4rem calc(1.6rem + var(--safe-bottom)); position: relative;
+      transform: translateY(40px); transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+      box-shadow: 0 -12px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(167,139,250,0.08); -webkit-overflow-scrolling: touch;
+    }
+    @media (min-width: 640px) {
+      .modal { border-radius: 20px; transform: scale(0.94) translateY(16px); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.55); }
+    }
+    .modal-overlay.active .modal { transform: translateY(0); }
+    @media (min-width: 640px) { .modal-overlay.active .modal { transform: scale(1) translateY(0); } }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+      position: sticky; top: 0; background: linear-gradient(180deg, #141824 70%, transparent); padding-bottom: 0.4rem; z-index: 2;
+    }
+    .modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; }
+    .close-btn {
+      background: rgba(255,255,255,0.07); border: none; color: var(--muted); width: 38px; height: 38px;
+      border-radius: 10px; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s; flex-shrink: 0;
+    }
+    .close-btn:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+    .form-group { margin-bottom: 1.1rem; }
+    label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.35rem; font-weight: 500; }
+    input, select, textarea {
+      width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.78rem 0.95rem; color: var(--text); font-size: 1rem; font-family: inherit;
+      transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: rgba(167,139,250,0.1); box-shadow: 0 0 0 3px rgba(167,139,250,0.12); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .btn {
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent)); color: white; border: none; border-radius: 12px;
+      padding: 0.9rem 1.3rem; font-size: 0.95rem; font-weight: 600; cursor: pointer; width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s; margin-top: 0.4rem; min-height: 48px;
+      box-shadow: 0 6px 20px -4px var(--accent-glow);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -4px var(--accent-glow); filter: brightness(1.05); }
+    .btn:active { transform: translateY(0); }
+    .btn-secondary { background: rgba(255,255,255,0.07); margin-top: 0.5rem; box-shadow: none; border: 1px solid var(--border); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); box-shadow: none; filter: none; }
+    .result-box {
+      background: linear-gradient(135deg, rgba(52,211,153,0.1), rgba(34,211,238,0.06));
+      border: 1px solid rgba(52,211,153,0.28); border-radius: 14px;
+      padding: 1.1rem; margin-top: 1.2rem; text-align: center; display: none;
+    }
+    .result-box.show { display: block; animation: fadeUp 0.3s ease; }
+    .result-value { font-size: 1.7rem; font-weight: 700; color: var(--success); font-family: 'Space Grotesk', sans-serif; word-break: break-all; }
+    .result-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .strength-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 0.55rem; overflow: hidden; }
+    .strength-fill { height: 100%; width: 0%; border-radius: 2px; transition: width 0.3s, background 0.3s; }
+    .timer-display {
+      font-family: 'Space Grotesk', sans-serif; font-size: 3.2rem; font-weight: 700;
+      text-align: center; letter-spacing: 2px; margin: 0.8rem 0 1.2rem; color: var(--accent2);
+    }
+    .timer-controls { display: flex; gap: 0.6rem; }
+    .timer-controls .btn { flex: 1; }
+    .color-preview { width: 100%; height: 70px; border-radius: 12px; margin-bottom: 1rem; border: 1px solid var(--border); }
+    .page-overlay {
+      position: fixed; inset: 0; background: var(--bg); z-index: 150; display: none; overflow-y: auto;
+      padding: calc(4.5rem + var(--safe-top)) 1.25rem calc(2rem + var(--safe-bottom)); -webkit-overflow-scrolling: touch;
+    }
+    .page-overlay.active { display: block; }
+    .page-content { max-width: 680px; margin: 0 auto; line-height: 1.65; color: var(--muted); }
+    .page-content h2 { font-family: 'Space Grotesk', sans-serif; color: var(--text); font-size: 1.7rem; margin-bottom: 1.2rem; }
+    .page-content h3 { color: var(--text); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+    .page-content p, .page-content li { margin-bottom: 0.8rem; font-size: 0.95rem; }
+    .page-content ul { padding-left: 1.3rem; }
+    .page-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-weight: 500; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    footer {
+      position: relative; z-index: 10; text-align: center;
+      padding: 2.2rem 1.25rem calc(2.2rem + var(--safe-bottom)); color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--border);
+    }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .copyright { opacity: 0.7; font-size: 0.78rem; }
+    .install-banner {
+      position: fixed; bottom: calc(1rem + var(--safe-bottom)); left: 1rem; right: 1rem; max-width: 400px; margin: 0 auto;
+      background: linear-gradient(135deg, #161a28, #12151f); border: 1px solid var(--border-accent); border-radius: 16px; padding: 1rem 1.15rem;
+      z-index: 90; display: none; align-items: center; gap: 0.9rem; box-shadow: 0 14px 40px rgba(0,0,0,0.5), 0 0 30px rgba(124,58,237,0.12);
+    }
+    .install-banner.show { display: flex; }
+    .install-banner p { font-size: 0.88rem; flex: 1; line-height: 1.35; }
+    .install-banner .btn { width: auto; padding: 0.55rem 1rem; margin: 0; min-height: auto; font-size: 0.85rem; }
+    .install-banner .dismiss { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 0.2rem; }
+    @media (max-width: 639px) {
+      .nav-links a:not(.install-btn) { display: none; }
+      .row { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+      .card-inner { padding: 1.1rem; }
+      .card-title { font-size: 0.95rem; }
+      .card-desc { font-size: 0.78rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .card-icon { width: 38px; height: 38px; font-size: 1.15rem; margin-bottom: 0.7rem; }
+    }
+    @media (max-width: 380px) { .tools-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <nav>
+    <div class="logo">DailyForge</div>
+    <div class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <button class="install-btn" id="install-btn">Install App</button>
+    </div>
+  </nav>
+  <section class="hero">
+    <h1>Free Everyday Tools that<br><span>actually matter</span></h1>
+    <p>Unit converter, tip calculator, BMI, EMI loan calculator, password generator, pomodoro timer and more. Fast, clean, no ads, works offline.</p>
+    <div class="hero-badges">
+      <span class="badge">14 useful tools</span>
+      <span class="badge">Works offline</span>
+      <span class="badge">Install as app</span>
+      <span class="badge">No tracking</span>
+    </div>
+  </section>
+  <section class="section" id="tools">
+    <h2 class="section-title">Daily Tools</h2>
+    <p class="section-sub">Free online utilities for the calculations you do every day — unit conversion, tip splitting, percentages, BMI, loans and more</p>
+
+    <div class="tools-grid">
+      <div class="tool-card" data-tool="unit"><div class="card-inner"><div class="card-icon">📐</div><div class="card-title">Unit Converter</div><div class="card-desc">Length, weight, temperature, volume</div></div></div>
+      <div class="tool-card" data-tool="tip"><div class="card-inner"><div class="card-icon">💰</div><div class="card-title">Tip & Bill Split</div><div class="card-desc">Tip + split fairly between friends</div></div></div>
+      <div class="tool-card" data-tool="percent"><div class="card-inner"><div class="card-icon">%</div><div class="card-title">Percentage</div><div class="card-desc">X% of Y & increase/decrease</div></div></div>
+      <div class="tool-card" data-tool="discount"><div class="card-inner"><div class="card-icon">🏷️</div><div class="card-title">Discount Calc</div><div class="card-desc">Sale price & savings instantly</div></div></div>
+      <div class="tool-card" data-tool="age"><div class="card-inner"><div class="card-icon">🎂</div><div class="card-title">Age Calculator</div><div class="card-desc">Exact years, months & days</div></div></div>
+      <div class="tool-card" data-tool="bmi"><div class="card-inner"><div class="card-icon">⚖️</div><div class="card-title">BMI Calculator</div><div class="card-desc">Body Mass Index + category</div></div></div>
+      <div class="tool-card" data-tool="emi"><div class="card-inner"><div class="card-icon">🏦</div><div class="card-title">EMI / Loan</div><div class="card-desc">Monthly payment calculator</div></div></div>
+      <div class="tool-card" data-tool="password"><div class="card-inner"><div class="card-icon">🔐</div><div class="card-title">Password Gen</div><div class="card-desc">Strong passwords + strength</div></div></div>
+      <div class="tool-card" data-tool="pomodoro"><div class="card-inner"><div class="card-icon">🍅</div><div class="card-title">Pomodoro</div><div class="card-desc">Focus timer 25/5 minutes</div></div></div>
+      <div class="tool-card" data-tool="stopwatch"><div class="card-inner"><div class="card-icon">⏱️</div><div class="card-title">Stopwatch</div><div class="card-desc">Simple lap-ready timer</div></div></div>
+      <div class="tool-card" data-tool="word"><div class="card-inner"><div class="card-icon">📝</div><div class="card-title">Word Counter</div><div class="card-desc">Words, chars, reading time</div></div></div>
+      <div class="tool-card" data-tool="case"><div class="card-inner"><div class="card-icon">Aa</div><div class="card-title">Case Converter</div><div class="card-desc">UPPER, lower, Title, snake…</div></div></div>
+      <div class="tool-card" data-tool="color"><div class="card-inner"><div class="card-icon">🎨</div><div class="card-title">Color Converter</div><div class="card-desc">HEX ↔ RGB live preview</div></div></div>
+      <div class="tool-card" data-tool="date"><div class="card-inner"><div class="card-icon">📅</div><div class="card-title">Date Difference</div><div class="card-desc">Days between any two dates</div></div></div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="#tools">Tools</a>
+    </div>
+    <p class="copyright">© 2026 DailyForge. All rights reserved. Built for real daily use.</p>
+  </footer>
+  <div class="install-banner" id="install-banner">
+    <p>Install DailyForge for quick access & offline use</p>
+    <button class="btn" id="banner-install">Install</button>
+    <button class="dismiss" id="banner-dismiss">×</button>
+  </div>
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Tool</h3>
+        <button class="close-btn" id="close-modal" aria-label="Close">×</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div class="page-overlay" id="page-about">
+    <div class="page-content">
+      <a href="#" class="page-back" onclick="closePage();return false;">← Back</a>
+      <h2>About DailyForge</h2>
+      <p>DailyForge is a collection of practical, everyday tools designed for real daily use. No accounts, no tracking, no ads.</p>
+      <p>Most “tool” websites are either packed with rarely-used gadgets or buried under advertisements. We focused on high-frequency tasks: converting units while shopping, splitting a restaurant bill, checking BMI, generating a strong password, timing focus sessions, calculating EMI, and more.</p>
+      <h3>Why these tools?</h3>
+      <ul>
+        <li>High real-world daily need</li>
+        <li>Relatively low competition / less saturated</li>
+        <li>Fast and work completely offline</li>
+        <li>Clean interface that respects your attention</li>
+      </ul>
+      <h3>Progressive Web App</h3>
+      <p>You can install DailyForge on your phone or computer like a native app. Once installed it works offline and opens instantly from your home screen.</p>
+      <p style="margin-top:2rem;opacity:0.7;">Made with care in 2026.</p>
+    </div>
+  </div>
+  <div class="page-overlay" id="page-privacy">
+    <div class="page-content">
+      <a href="#" class="page-back" onclick="closePage();return false;">← Back</a>
+      <h2>Privacy Policy</h2>
+      <p><strong>Last updated:</strong> October 2026</p>
+      <p>DailyForge is designed to respect your privacy completely.</p>
+      <h3>What we collect</h3>
+      <p>We collect <strong>nothing</strong>.</p>
+      <ul>
+        <li>No personal data</li>
+        <li>No analytics or tracking scripts</li>
+        <li>No cookies for advertising</li>
+        <li>No accounts or logins</li>
+      </ul>
+      <h3>Local processing</h3>
+      <p>All calculations happen entirely in your browser. Your numbers, text, and passwords never leave your device.</p>
+      <h3>Offline & caching</h3>
+      <p>The Progressive Web App caches the app files on your device so it works offline. This cache stays only on your device and can be cleared anytime through your browser settings.</p>
+      <h3>Third-party resources</h3>
+      <p>We load Three.js and Google Fonts from public CDNs for the visual experience. These services may receive standard technical requests (IP, user-agent). No personal content is sent to them.</p>
+      <h3>Contact</h3>
+      <p>If you have questions about this policy, you can simply stop using the app — there is nothing stored about you.</p>
+    </div>
+  </div>
+  <div class="page-overlay" id="page-terms">
+    <div class="page-content">
+      <a href="#" class="page-back" onclick="closePage();return false;">← Back</a>
+      <h2>Terms of Use</h2>
+      <p><strong>Last updated:</strong> October 2026</p>
+      <h3>Acceptance</h3>
+      <p>By using DailyForge you agree to these simple terms.</p>
+      <h3>Service</h3>
+      <p>DailyForge provides free browser-based utility tools. The service is provided “as is” without warranties of any kind.</p>
+      <h3>Accuracy</h3>
+      <p>While we strive for correctness, calculations (especially BMI categories or loan amortization) are for informational purposes only. Always verify critical figures with official sources or professionals.</p>
+      <h3>Acceptable use</h3>
+      <p>Use the tools for personal, everyday purposes. Do not attempt to disrupt the service or use it for illegal activities.</p>
+      <h3>Limitation of liability</h3>
+      <p>To the maximum extent permitted by law, the creators of DailyForge are not liable for any damages arising from the use or inability to use the tools.</p>
+      <h3>Changes</h3>
+      <p>We may update these terms. Continued use after changes constitutes acceptance.</p>
+      <h3>Copyright</h3>
+      <p>© 2026 DailyForge. All rights reserved. The name, design, and code of this application are protected. You may use the tools freely for personal use.</p>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
+    }
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('install-btn');
+    const banner = document.getElementById('install-banner');
+    const bannerInstall = document.getElementById('banner-install');
+    const bannerDismiss = document.getElementById('banner-dismiss');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault(); deferredPrompt = e;
+      installBtn.classList.add('show');
+      if (!localStorage.getItem('df-install-dismissed')) setTimeout(() => banner.classList.add('show'), 2500);
+    });
+    function triggerInstall() {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => { deferredPrompt = null; installBtn.classList.remove('show'); banner.classList.remove('show'); });
+    }
+    installBtn.addEventListener('click', triggerInstall);
+    bannerInstall.addEventListener('click', triggerInstall);
+    bannerDismiss.addEventListener('click', () => { banner.classList.remove('show'); localStorage.setItem('df-install-dismissed', '1'); });
+
+    const canvas = document.getElementById('bg-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x08090f, 0.018);
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.z = 32;
+    scene.add(new THREE.AmbientLight(0x2a2a40, 0.55));
+    const p1 = new THREE.PointLight(0xa78bfa, 1.8, 90); p1.position.set(18, 12, 22); scene.add(p1);
+    const p2 = new THREE.PointLight(0x22d3ee, 1.3, 70); p2.position.set(-16, -10, 18); scene.add(p2);
+    const p3 = new THREE.PointLight(0xa78bfa, 0.7, 50); p3.position.set(0, 20, 5); scene.add(p3);
+    const geos = [
+      new THREE.IcosahedronGeometry(1.1, 0), new THREE.OctahedronGeometry(1.0, 0),
+      new THREE.TetrahedronGeometry(1.2, 0), new THREE.DodecahedronGeometry(0.95, 0),
+      new THREE.TorusGeometry(0.7, 0.28, 12, 32), new THREE.BoxGeometry(1.15, 1.15, 1.15)
+    ];
+    const mats = [
+      new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.55, roughness: 0.25, transparent: true, opacity: 0.75, emissive: 0x3b1d8a, emissiveIntensity: 0.25 }),
+      new THREE.MeshStandardMaterial({ color: 0x22d3ee, metalness: 0.5, roughness: 0.3, transparent: true, opacity: 0.7, emissive: 0x003344, emissiveIntensity: 0.2 }),
+      new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.4, roughness: 0.35, transparent: true, opacity: 0.65, emissive: 0x2a1a5e, emissiveIntensity: 0.15 }),
+      new THREE.MeshStandardMaterial({ color: 0x22d3ee, metalness: 0.6, roughness: 0.2, transparent: true, opacity: 0.6, emissive: 0x003355, emissiveIntensity: 0.2 }),
+      new THREE.MeshStandardMaterial({ color: 0xc4b5fd, metalness: 0.35, roughness: 0.4, transparent: true, opacity: 0.55, emissive: 0x1a1040, emissiveIntensity: 0.1 })
+    ];
+    const meshes = [];
+    for (let i = 0; i < 22; i++) {
+      const geo = geos[Math.floor(Math.random() * geos.length)];
+      const mat = mats[Math.floor(Math.random() * mats.length)].clone();
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.scale.setScalar(0.6 + Math.random() * 1.1);
+      mesh.position.set((Math.random()-0.5)*55, (Math.random()-0.5)*40, (Math.random()-0.5)*45 - 8);
+      mesh.rotation.set(Math.random()*Math.PI*2, Math.random()*Math.PI*2, Math.random()*Math.PI);
+      mesh.userData = { vx:(Math.random()-0.5)*0.008, vy:(Math.random()-0.5)*0.007, vz:(Math.random()-0.5)*0.005, rx:(Math.random()-0.5)*0.012, ry:(Math.random()-0.5)*0.014, rz:(Math.random()-0.5)*0.008 };
+      scene.add(mesh); meshes.push(mesh);
+    }
+    const pCount = 180;
+    const pGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      positions[i*3] = (Math.random()-0.5)*90; positions[i*3+1] = (Math.random()-0.5)*60; positions[i*3+2] = (Math.random()-0.5)*70;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
+      color: 0x9b7cff, size: 0.18, transparent: true, opacity: 0.55, sizeAttenuation: true, blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    scene.add(particles);
+    const lineMat = new THREE.LineBasicMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.06 });
+    for (let i = 0; i < 4; i++) {
+      const curve = new THREE.EllipseCurve(0, 0, 12 + i*4, 8 + i*2.5, 0, 2*Math.PI, false, 0);
+      const pts = curve.getPoints(64);
+      const lGeo = new THREE.BufferGeometry().setFromPoints(pts.map(p => new THREE.Vector3(p.x, p.y*0.4, -5 - i*3)));
+      const line = new THREE.Line(lGeo, lineMat); line.rotation.x = Math.PI / 2.8; scene.add(line);
+    }
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', e => { mouseX = (e.clientX / window.innerWidth - 0.5) * 2; mouseY = (e.clientY / window.innerHeight - 0.5) * 2; });
+    document.addEventListener('touchmove', e => { if (e.touches[0]) { mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2; mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2; } }, { passive: true });
+    let time = 0;
+    function animate() {
+      requestAnimationFrame(animate); time += 0.004;
+      meshes.forEach((m, idx) => {
+        m.rotation.x += m.userData.rx; m.rotation.y += m.userData.ry; m.rotation.z += m.userData.rz;
+        m.position.x += m.userData.vx; m.position.y += m.userData.vy + Math.sin(time + idx) * 0.002; m.position.z += m.userData.vz;
+        if (Math.abs(m.position.x) > 30) m.userData.vx *= -1;
+        if (Math.abs(m.position.y) > 22) m.userData.vy *= -1;
+        if (Math.abs(m.position.z + 8) > 25) m.userData.vz *= -1;
+      });
+      particles.rotation.y += 0.0006; particles.rotation.x = Math.sin(time * 0.3) * 0.05;
+      p1.intensity = 1.6 + Math.sin(time * 1.5) * 0.3; p2.intensity = 1.2 + Math.cos(time * 1.2) * 0.25;
+      camera.position.x += (mouseX * 4 - camera.position.x) * 0.025;
+      camera.position.y += (-mouseY * 2.5 - camera.position.y) * 0.025;
+      camera.lookAt(0, 0, 0); renderer.render(scene, camera);
+    }
+    animate();
+    window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+
+    function openPage(name) {
+      document.querySelectorAll('.page-overlay').forEach(p => p.classList.remove('active'));
+      const page = document.getElementById('page-' + name);
+      if (page) { page.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    }
+    function closePage() { document.querySelectorAll('.page-overlay').forEach(p => p.classList.remove('active')); document.body.style.overflow = ''; }
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.getElementById('close-modal');
+    let pomoInterval = null, pomoRemaining = 25*60, pomoRunning = false, pomoMode = 'focus';
+    let swInterval = null, swStart = 0, swElapsed = 0, swRunning = false;
+
+    const tools = {
+      unit: { title: 'Unit Converter', html: `<div class="form-group"><label>Category</label><select id="unit-cat"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option><option value="volume">Volume</option></select></div><div class="row"><div class="form-group"><label>From</label><select id="unit-from"></select></div><div class="form-group"><label>To</label><select id="unit-to"></select></div></div><div class="form-group"><label>Value</label><input type="number" id="unit-val" value="1" inputmode="decimal"></div><button class="btn" onclick="convertUnit()">Convert</button><div class="result-box" id="unit-result"><div class="result-value" id="unit-out">—</div><div class="result-label">Converted value</div></div>` },
+      tip: { title: 'Tip & Bill Splitter', html: `<div class="form-group"><label>Bill Amount</label><input type="number" id="tip-bill" placeholder="85.50" step="0.01" inputmode="decimal"></div><div class="form-group"><label>Tip %</label><input type="number" id="tip-percent" value="15" inputmode="decimal"></div><div class="form-group"><label>Number of People</label><input type="number" id="tip-people" value="1" min="1" inputmode="numeric"></div><button class="btn" onclick="calcTip()">Calculate</button><div class="result-box" id="tip-result"><div class="result-value" id="tip-out">—</div><div class="result-label" id="tip-detail"></div></div>` },
+      percent: { title: 'Percentage Calculator', html: `<div class="form-group"><label>What is</label><input type="number" id="perc-x" placeholder="X" inputmode="decimal"></div><div class="form-group"><label>% of</label><input type="number" id="perc-y" placeholder="Y" inputmode="decimal"></div><button class="btn" onclick="calcPercent()">Calculate</button><div class="result-box" id="perc-result"><div class="result-value" id="perc-out">—</div><div class="result-label">Result</div></div><hr style="border:none;border-top:1px solid var(--border);margin:1.4rem 0;"><div class="form-group"><label>Base number</label><input type="number" id="perc-base" placeholder="100" inputmode="decimal"></div><div class="form-group"><label>Change % (+ or −)</label><input type="number" id="perc-change" placeholder="20 or -15" inputmode="decimal"></div><button class="btn" onclick="calcChange()">Apply Change</button><div class="result-box" id="change-result"><div class="result-value" id="change-out">—</div><div class="result-label">New value</div></div>` },
+      discount: { title: 'Discount Calculator', html: `<div class="form-group"><label>Original Price</label><input type="number" id="disc-price" placeholder="100" step="0.01" inputmode="decimal"></div><div class="form-group"><label>Discount %</label><input type="number" id="disc-pct" placeholder="20" inputmode="decimal"></div><button class="btn" onclick="calcDiscount()">Calculate</button><div class="result-box" id="disc-result"><div class="result-value" id="disc-out">—</div><div class="result-label" id="disc-detail"></div></div>` },
+      age: { title: 'Age Calculator', html: `<div class="form-group"><label>Date of Birth</label><input type="date" id="age-dob"></div><div class="form-group"><label>As of (optional)</label><input type="date" id="age-asof"></div><button class="btn" onclick="calcAge()">Calculate Age</button><div class="result-box" id="age-result"><div class="result-value" id="age-out">—</div><div class="result-label" id="age-detail"></div></div>` },
+      bmi: { title: 'BMI Calculator', html: `<div class="form-group"><label>Height (cm)</label><input type="number" id="bmi-height" placeholder="175" inputmode="decimal"></div><div class="form-group"><label>Weight (kg)</label><input type="number" id="bmi-weight" placeholder="70" inputmode="decimal"></div><button class="btn" onclick="calcBMI()">Calculate BMI</button><div class="result-box" id="bmi-result"><div class="result-value" id="bmi-out">—</div><div class="result-label" id="bmi-category"></div></div>` },
+      emi: { title: 'EMI / Loan Calculator', html: `<div class="form-group"><label>Loan Amount</label><input type="number" id="emi-principal" placeholder="500000" inputmode="decimal"></div><div class="form-group"><label>Annual Interest Rate (%)</label><input type="number" id="emi-rate" placeholder="8.5" step="0.1" inputmode="decimal"></div><div class="form-group"><label>Tenure (months)</label><input type="number" id="emi-months" placeholder="60" inputmode="numeric"></div><button class="btn" onclick="calcEMI()">Calculate EMI</button><div class="result-box" id="emi-result"><div class="result-value" id="emi-out">—</div><div class="result-label" id="emi-detail"></div></div>` },
+      password: { title: 'Password Generator', html: `<div class="form-group"><label>Length: <span id="pw-len-val">16</span></label><input type="range" id="pw-len" min="8" max="64" value="16" oninput="document.getElementById('pw-len-val').textContent=this.value"></div><div class="form-group" style="display:flex;flex-wrap:wrap;gap:0.9rem;"><label style="display:flex;align-items:center;gap:0.35rem;"><input type="checkbox" id="pw-upper" checked> Upper</label><label style="display:flex;align-items:center;gap:0.35rem;"><input type="checkbox" id="pw-lower" checked> Lower</label><label style="display:flex;align-items:center;gap:0.35rem;"><input type="checkbox" id="pw-num" checked> Numbers</label><label style="display:flex;align-items:center;gap:0.35rem;"><input type="checkbox" id="pw-sym" checked> Symbols</label></div><button class="btn" onclick="genPassword()">Generate</button><div class="result-box show" id="pw-result" style="margin-top:1rem;"><div class="result-value" id="pw-out" style="font-size:1.1rem;user-select:all;">Click Generate</div><div class="strength-bar"><div class="strength-fill" id="pw-strength"></div></div><div class="result-label" id="pw-str-label" style="margin-top:0.45rem;"></div></div><button class="btn btn-secondary" onclick="copyPassword()">Copy to Clipboard</button>` },
+      pomodoro: { title: 'Pomodoro Timer', html: `<div class="timer-display" id="pomo-display">25:00</div><div class="timer-controls"><button class="btn" id="pomo-start" onclick="togglePomo()">Start</button><button class="btn btn-secondary" onclick="resetPomo()">Reset</button></div><div style="display:flex;gap:0.5rem;margin-top:1rem;"><button class="btn btn-secondary" style="flex:1" onclick="setPomoMode('focus')">Focus 25</button><button class="btn btn-secondary" style="flex:1" onclick="setPomoMode('short')">Break 5</button><button class="btn btn-secondary" style="flex:1" onclick="setPomoMode('long')">Break 15</button></div><p style="text-align:center;color:var(--muted);font-size:0.82rem;margin-top:1rem;" id="pomo-label">Focus session</p>` },
+      stopwatch: { title: 'Stopwatch', html: `<div class="timer-display" id="sw-display">00:00.00</div><div class="timer-controls"><button class="btn" id="sw-start" onclick="toggleSW()">Start</button><button class="btn btn-secondary" onclick="resetSW()">Reset</button></div>` },
+      word: { title: 'Word Counter', html: `<div class="form-group"><label>Your text</label><textarea id="word-text" rows="6" placeholder="Start typing or paste…"></textarea></div><div class="result-box show"><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;text-align:left;"><div><div class="result-value" style="font-size:1.35rem;" id="wc-words">0</div><div class="result-label">Words</div></div><div><div class="result-value" style="font-size:1.35rem;" id="wc-chars">0</div><div class="result-label">Characters</div></div><div><div class="result-value" style="font-size:1.35rem;" id="wc-sent">0</div><div class="result-label">Sentences</div></div><div><div class="result-value" style="font-size:1.35rem;" id="wc-read">0</div><div class="result-label">Min read</div></div></div></div>` },
+      case: { title: 'Case Converter', html: `<div class="form-group"><label>Text</label><textarea id="case-text" rows="4" placeholder="Type or paste text…"></textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;"><button class="btn btn-secondary" onclick="convertCase('upper')">UPPERCASE</button><button class="btn btn-secondary" onclick="convertCase('lower')">lowercase</button><button class="btn btn-secondary" onclick="convertCase('title')">Title Case</button><button class="btn btn-secondary" onclick="convertCase('sentence')">Sentence case</button><button class="btn btn-secondary" onclick="convertCase('snake')">snake_case</button><button class="btn btn-secondary" onclick="convertCase('kebab')">kebab-case</button><button class="btn btn-secondary" onclick="convertCase('camel')">camelCase</button><button class="btn btn-secondary" onclick="convertCase('pascal')">PascalCase</button></div><button class="btn btn-secondary" style="margin-top:0.6rem;" onclick="copyCase()">Copy Result</button>` },
+      color: { title: 'Color Converter', html: `<div class="color-preview" id="color-preview" style="background:#a78bfa;"></div><div class="form-group"><label>HEX</label><input type="text" id="color-hex" value="#a78bfa" placeholder="#a78bfa" oninput="hexToRgb()"></div><div class="row"><div class="form-group"><label>R</label><input type="number" id="color-r" min="0" max="255" value="167" oninput="rgbToHex()" inputmode="numeric"></div><div class="form-group"><label>G</label><input type="number" id="color-g" min="0" max="255" value="139" oninput="rgbToHex()" inputmode="numeric"></div><div class="form-group"><label>B</label><input type="number" id="color-b" min="0" max="255" value="250" oninput="rgbToHex()" inputmode="numeric"></div></div><div class="form-group"><label>Or pick</label><input type="color" id="color-picker" value="#a78bfa" oninput="pickerToAll()" style="height:48px;padding:4px;"></div>` },
+      date: { title: 'Date Difference', html: `<div class="form-group"><label>From Date</label><input type="date" id="date-from"></div><div class="form-group"><label>To Date</label><input type="date" id="date-to"></div><button class="btn" onclick="calcDateDiff()">Calculate</button><div class="result-box" id="date-result"><div class="result-value" id="date-out">—</div><div class="result-label" id="date-detail"></div></div>` }
+    };
+
+    document.querySelectorAll('.tool-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.tool; const tool = tools[key];
+        if (pomoInterval) { clearInterval(pomoInterval); pomoInterval = null; pomoRunning = false; }
+        if (swInterval) { clearInterval(swInterval); swInterval = null; swRunning = false; }
+        modalTitle.textContent = tool.title; modalBody.innerHTML = tool.html;
+        modal.classList.add('active'); document.body.style.overflow = 'hidden';
+        if (key === 'unit') initUnitConverter();
+        if (key === 'word') { document.getElementById('word-text').addEventListener('input', updateWordCount); updateWordCount(); }
+        if (key === 'age') document.getElementById('age-asof').valueAsDate = new Date();
+        if (key === 'date') document.getElementById('date-to').valueAsDate = new Date();
+        if (key === 'pomodoro') { pomoRemaining = 25*60; updatePomoDisplay(); }
+        if (key === 'stopwatch') { swElapsed = 0; updateSWDisplay(); }
+      });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    function closeModal() {
+      modal.classList.remove('active'); document.body.style.overflow = '';
+      if (pomoInterval) { clearInterval(pomoInterval); pomoInterval = null; pomoRunning = false; }
+      if (swInterval) { clearInterval(swInterval); swInterval = null; swRunning = false; }
+    }
+
+    const unitData = {
+      length: { units: { m:1, km:1000, cm:0.01, mm:0.001, mi:1609.34, yd:0.9144, ft:0.3048, in:0.0254 }, labels: { m:'Meters', km:'Kilometers', cm:'Centimeters', mm:'Millimeters', mi:'Miles', yd:'Yards', ft:'Feet', in:'Inches' } },
+      weight: { units: { kg:1, g:0.001, mg:0.000001, lb:0.453592, oz:0.0283495, t:1000 }, labels: { kg:'Kilograms', g:'Grams', mg:'Milligrams', lb:'Pounds', oz:'Ounces', t:'Tonnes' } },
+      temp: { units: { c:'C', f:'F', k:'K' }, labels: { c:'Celsius', f:'Fahrenheit', k:'Kelvin' } },
+      volume: { units: { l:1, ml:0.001, gal:3.78541, qt:0.946353, pt:0.473176, cup:0.24 }, labels: { l:'Liters', ml:'Milliliters', gal:'Gallons (US)', qt:'Quarts', pt:'Pints', cup:'Cups' } }
+    };
+    function initUnitConverter() { document.getElementById('unit-cat').addEventListener('change', populateUnits); populateUnits(); }
+    function populateUnits() {
+      const cat = document.getElementById('unit-cat').value;
+      const from = document.getElementById('unit-from'), to = document.getElementById('unit-to');
+      const data = unitData[cat]; from.innerHTML = to.innerHTML = '';
+      Object.keys(data.units).forEach(k => { from.innerHTML += `<option value="${k}">${data.labels[k]}</option>`; to.innerHTML += `<option value="${k}">${data.labels[k]}</option>`; });
+      to.selectedIndex = 1;
+    }
+    function convertUnit() {
+      const cat = document.getElementById('unit-cat').value, from = document.getElementById('unit-from').value, to = document.getElementById('unit-to').value;
+      const val = parseFloat(document.getElementById('unit-val').value); if (isNaN(val)) return;
+      let result;
+      if (cat === 'temp') { let c = from === 'c' ? val : from === 'f' ? (val-32)*5/9 : val-273.15; result = to === 'c' ? c : to === 'f' ? c*9/5+32 : c+273.15; }
+      else result = (val * unitData[cat].units[from]) / unitData[cat].units[to];
+      document.getElementById('unit-out').textContent = Number(result.toFixed(6)); document.getElementById('unit-result').classList.add('show');
+    }
+    function calcTip() {
+      const bill = parseFloat(document.getElementById('tip-bill').value), pct = parseFloat(document.getElementById('tip-percent').value), people = parseInt(document.getElementById('tip-people').value) || 1;
+      if (isNaN(bill)) return; const tip = bill * pct / 100, total = bill + tip;
+      document.getElementById('tip-out').textContent = (total / people).toFixed(2);
+      document.getElementById('tip-detail').textContent = `Tip: ${tip.toFixed(2)} • Total: ${total.toFixed(2)} • ${people} person(s)`;
+      document.getElementById('tip-result').classList.add('show');
+    }
+    function calcPercent() {
+      const x = parseFloat(document.getElementById('perc-x').value), y = parseFloat(document.getElementById('perc-y').value);
+      if (isNaN(x)||isNaN(y)) return; document.getElementById('perc-out').textContent = ((x/100)*y).toFixed(4); document.getElementById('perc-result').classList.add('show');
+    }
+    function calcChange() {
+      const base = parseFloat(document.getElementById('perc-base').value), change = parseFloat(document.getElementById('perc-change').value);
+      if (isNaN(base)||isNaN(change)) return; document.getElementById('change-out').textContent = (base*(1+change/100)).toFixed(4); document.getElementById('change-result').classList.add('show');
+    }
+    function calcDiscount() {
+      const price = parseFloat(document.getElementById('disc-price').value), pct = parseFloat(document.getElementById('disc-pct').value);
+      if (isNaN(price)||isNaN(pct)) return; const save = price * pct / 100;
+      document.getElementById('disc-out').textContent = (price - save).toFixed(2); document.getElementById('disc-detail').textContent = `You save ${save.toFixed(2)} (${pct}% off)`; document.getElementById('disc-result').classList.add('show');
+    }
+    function calcAge() {
+      const dob = new Date(document.getElementById('age-dob').value);
+      const asof = document.getElementById('age-asof').value ? new Date(document.getElementById('age-asof').value) : new Date();
+      if (isNaN(dob.getTime())) return;
+      let y = asof.getFullYear()-dob.getFullYear(), m = asof.getMonth()-dob.getMonth(), d = asof.getDate()-dob.getDate();
+      if (d < 0) { m--; d += new Date(asof.getFullYear(), asof.getMonth(), 0).getDate(); }
+      if (m < 0) { y--; m += 12; }
+      document.getElementById('age-out').textContent = y + ' years'; document.getElementById('age-detail').textContent = m + ' months, ' + d + ' days'; document.getElementById('age-result').classList.add('show');
+    }
+    function calcBMI() {
+      const h = parseFloat(document.getElementById('bmi-height').value)/100, w = parseFloat(document.getElementById('bmi-weight').value);
+      if (isNaN(h)||isNaN(w)||h<=0) return; const bmi = w/(h*h);
+      const cat = bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
+      document.getElementById('bmi-out').textContent = bmi.toFixed(1); document.getElementById('bmi-category').textContent = cat; document.getElementById('bmi-result').classList.add('show');
+    }
+    function calcEMI() {
+      const P = parseFloat(document.getElementById('emi-principal').value), annual = parseFloat(document.getElementById('emi-rate').value), n = parseInt(document.getElementById('emi-months').value);
+      if (isNaN(P)||isNaN(annual)||isNaN(n)||n<=0) return; const r = annual / 12 / 100;
+      const emi = r === 0 ? P/n : P * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1); const total = emi * n;
+      document.getElementById('emi-out').textContent = emi.toFixed(2); document.getElementById('emi-detail').textContent = `Total: ${total.toFixed(2)} • Interest: ${(total-P).toFixed(2)}`; document.getElementById('emi-result').classList.add('show');
+    }
+    function genPassword() {
+      const len = parseInt(document.getElementById('pw-len').value); let chars = '';
+      if (document.getElementById('pw-upper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (document.getElementById('pw-lower').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+      if (document.getElementById('pw-num').checked) chars += '0123456789';
+      if (document.getElementById('pw-sym').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+      if (!chars) { document.getElementById('pw-out').textContent = 'Select options'; return; }
+      let pw = ''; const arr = new Uint32Array(len); crypto.getRandomValues(arr);
+      for (let i=0;i<len;i++) pw += chars[arr[i]%chars.length];
+      document.getElementById('pw-out').textContent = pw;
+      let score = 0; if (len>=12) score++; if (len>=16) score++;
+      if (/[A-Z]/.test(pw)&&/[a-z]/.test(pw)) score++; if (/\d/.test(pw)) score++; if (/[^A-Za-z0-9]/.test(pw)) score++;
+      const fill = document.getElementById('pw-strength');
+      const labels = ['Weak','Fair','Good','Strong','Very Strong'], colors = ['#ff5252','#ffab40','#ffd740','#69f0ae','#00e676'];
+      fill.style.width = (score/5*100)+'%'; fill.style.background = colors[Math.max(0,score-1)];
+      document.getElementById('pw-str-label').textContent = labels[Math.max(0,score-1)];
+    }
+    function copyPassword() {
+      const t = document.getElementById('pw-out').textContent;
+      if (t && t !== 'Click Generate') navigator.clipboard.writeText(t).then(() => { const btn = event.target; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy to Clipboard', 1400); });
+    }
+    function updatePomoDisplay() {
+      const m = Math.floor(pomoRemaining / 60), s = pomoRemaining % 60;
+      const el = document.getElementById('pomo-display'); if (el) el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    }
+    function togglePomo() {
+      const btn = document.getElementById('pomo-start');
+      if (pomoRunning) { clearInterval(pomoInterval); pomoInterval = null; pomoRunning = false; if (btn) btn.textContent = 'Start'; }
+      else {
+        pomoRunning = true; if (btn) btn.textContent = 'Pause';
+        pomoInterval = setInterval(() => {
+          pomoRemaining--; updatePomoDisplay();
+          if (pomoRemaining <= 0) {
+            clearInterval(pomoInterval); pomoInterval = null; pomoRunning = false; if (btn) btn.textContent = 'Start';
+            if (navigator.vibrate) navigator.vibrate([200,100,200]);
+            alert(pomoMode === 'focus' ? 'Focus session complete! Take a break.' : 'Break over — back to focus!');
+          }
+        }, 1000);
+      }
+    }
+    function resetPomo() { clearInterval(pomoInterval); pomoInterval = null; pomoRunning = false; setPomoMode(pomoMode); const btn = document.getElementById('pomo-start'); if (btn) btn.textContent = 'Start'; }
+    function setPomoMode(mode) {
+      pomoMode = mode;
+      if (mode === 'focus') pomoRemaining = 25*60; else if (mode === 'short') pomoRemaining = 5*60; else pomoRemaining = 15*60;
+      updatePomoDisplay();
+      const label = document.getElementById('pomo-label');
+      if (label) label.textContent = mode === 'focus' ? 'Focus session' : mode === 'short' ? 'Short break' : 'Long break';
+      if (pomoRunning) { clearInterval(pomoInterval); pomoRunning = false; document.getElementById('pomo-start').textContent = 'Start'; }
+    }
+    function updateSWDisplay() {
+      const el = document.getElementById('sw-display'); if (!el) return;
+      const total = swRunning ? (Date.now() - swStart + swElapsed) : swElapsed;
+      const ms = Math.floor((total % 1000) / 10), s = Math.floor(total / 1000) % 60, m = Math.floor(total / 60000);
+      el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + '.' + String(ms).padStart(2,'0');
+    }
+    function toggleSW() {
+      const btn = document.getElementById('sw-start');
+      if (swRunning) { clearInterval(swInterval); swInterval = null; swElapsed += Date.now() - swStart; swRunning = false; if (btn) btn.textContent = 'Start'; }
+      else { swStart = Date.now(); swRunning = true; if (btn) btn.textContent = 'Pause'; swInterval = setInterval(updateSWDisplay, 30); }
+    }
+    function resetSW() { clearInterval(swInterval); swInterval = null; swRunning = false; swElapsed = 0; updateSWDisplay(); const btn = document.getElementById('sw-start'); if (btn) btn.textContent = 'Start'; }
+    function updateWordCount() {
+      const text = document.getElementById('word-text').value;
+      const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+      const chars = text.length;
+      const sentences = text.trim() === '' ? 0 : (text.match(/[^.!?]+[.!?]+/g) || []).length || (text.trim()?1:0);
+      document.getElementById('wc-words').textContent = words; document.getElementById('wc-chars').textContent = chars;
+      document.getElementById('wc-sent').textContent = sentences; document.getElementById('wc-read').textContent = Math.ceil(words / 200);
+    }
+    function convertCase(type) {
+      const ta = document.getElementById('case-text'); let t = ta.value;
+      switch(type) {
+        case 'upper': t = t.toUpperCase(); break; case 'lower': t = t.toLowerCase(); break;
+        case 'title': t = t.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); break;
+        case 'sentence': t = t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase()); break;
+        case 'snake': t = t.trim().toLowerCase().replace(/\s+/g,'_').replace(/[^\w_]/g,''); break;
+        case 'kebab': t = t.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^\w-]/g,''); break;
+        case 'camel': t = t.trim().toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_,c) => c.toUpperCase()); break;
+        case 'pascal': t = t.trim().toLowerCase().replace(/(^|[^a-zA-Z0-9]+)(.)/g, (_,a,c) => c.toUpperCase()); break;
+      }
+      ta.value = t;
+    }
+    function copyCase() {
+      const t = document.getElementById('case-text').value;
+      if (t) navigator.clipboard.writeText(t).then(() => { const btn = event.target; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy Result', 1400); });
+    }
+    function hexToRgb() {
+      let hex = document.getElementById('color-hex').value.replace('#','');
+      if (hex.length === 3) hex = hex.split('').map(c=>c+c).join(''); if (hex.length !== 6) return;
+      const r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16); if (isNaN(r)) return;
+      document.getElementById('color-r').value = r; document.getElementById('color-g').value = g; document.getElementById('color-b').value = b;
+      document.getElementById('color-preview').style.background = '#'+hex; document.getElementById('color-picker').value = '#'+hex;
+    }
+    function rgbToHex() {
+      const r = Math.min(255, Math.max(0, parseInt(document.getElementById('color-r').value)||0));
+      const g = Math.min(255, Math.max(0, parseInt(document.getElementById('color-g').value)||0));
+      const b = Math.min(255, Math.max(0, parseInt(document.getElementById('color-b').value)||0));
+      const hex = '#' + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
+      document.getElementById('color-hex').value = hex; document.getElementById('color-preview').style.background = hex; document.getElementById('color-picker').value = hex;
+    }
+    function pickerToAll() { const hex = document.getElementById('color-picker').value; document.getElementById('color-hex').value = hex; hexToRgb(); }
+    function calcDateDiff() {
+      const from = new Date(document.getElementById('date-from').value), to = new Date(document.getElementById('date-to').value);
+      if (isNaN(from.getTime())||isNaN(to.getTime())) return;
+      const days = Math.floor(Math.abs(to-from)/(1000*60*60*24));
+      document.getElementById('date-out').textContent = days + ' days';
+      document.getElementById('date-detail').textContent = Math.floor(days/7) + ' weeks • ~' + Math.floor(days/30.44) + ' months • ~' + Math.floor(days/365.25) + ' years';
+      document.getElementById('date-result').classList.add('show');
+    }
+  </script>
+</body>
+</html>
